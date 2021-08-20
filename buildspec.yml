@@ -5,8 +5,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/w6h3a7y0
-      - REPOSITORY_URI=public.ecr.aws/w6h3a7y0/andychuang
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 863936362823.dkr.ecr.us-west-2.amazonaws.com
+      - REPOSITORY_URI=863936362823.dkr.ecr.us-west-2.amazonaws.com/andychuang-php-ci
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
@@ -22,6 +22,6 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"andychuang-php-ci","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
