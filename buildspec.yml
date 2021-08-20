@@ -13,8 +13,6 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - pwd
-      - docker pull ubuntu
       - docker build -t andychuang-php-ci .
       - docker tag andychuang-php-ci:latest 863936362823.dkr.ecr.us-west-2.amazonaws.com/andychuang-php-ci:latest
   post_build:
@@ -22,7 +20,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - docker push 863936362823.dkr.ecr.us-west-2.amazonaws.com/andychuang-php-ci:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
