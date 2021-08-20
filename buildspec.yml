@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
+      - cd ecs-demo-php-simple-app
       - docker build -t andychuang-php-ci .
       - docker tag andychuang-php-ci:latest 863936362823.dkr.ecr.us-west-2.amazonaws.com/andychuang-php-ci:latest
   post_build:
