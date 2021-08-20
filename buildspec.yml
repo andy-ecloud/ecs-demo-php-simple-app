@@ -21,6 +21,6 @@ phases:
       - echo Pushing the Docker images...
       - docker push 863936362823.dkr.ecr.us-west-2.amazonaws.com/andychuang-php-ci:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"apache2server8","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
