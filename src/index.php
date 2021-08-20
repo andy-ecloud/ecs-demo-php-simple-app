@@ -23,6 +23,7 @@
                         echo "remote:" , $_SERVER['REMOTE_ADDR'], "<br>";
                         echo "private:" , $_SERVER['SERVER_ADDR'], "<br>";
                         echo "VVVVVV6";
+                        echo "implement";
                         $myfile = fopen("/var/www/my-vol/date", "r") or die("");
                         echo fread($myfile,filesize("/var/www/my-vol/date"));
                         fclose($myfile);
